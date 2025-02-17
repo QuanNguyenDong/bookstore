@@ -101,3 +101,13 @@ curl -X PUT http://localhost:9010/v1/book/1 -H "Content-Type: application/json" 
 ```bash
 curl -X DELETE http://localhost:9010/v1/book/1
 ```
+
+## Rate Limiter Middleware
+
+To prevent abuse and ensure fair usage, the API includes a rate limiter middleware. Each user is allowed a requests per second. If the limit is exceeded, the API will respond with a `429 Too Many Requests` status code.
+
+**Response:**
+- `429 Too Many Requests` if the rate limit is exceeded
+
+**Headers:**
+- `Retry-After`: The number of seconds to wait before making a new request
